@@ -1,0 +1,89 @@
+@import './sass/bottom-bar';
+@import './sass/side-nav';
+@import './sass/content-header';
+@import './sass/page';
+@import './sass/mobile-bottom-bar';
+@import './sass/mobile-header';
+@import './sass/queue';
+
+:root {
+    --bg-color: #fff;
+    --text-color: #000;
+    --primary-color: rgb(255, 0, 51);
+    // --primary-color: rgb(0, 255, 191);
+    // --secondary-color: rgb(247, 113, 140);
+    --white: white;
+    --black: black;
+    --card-color: rgb(207, 206, 206);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    // cursor: default;
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    // overflow: hidden;
+    height: 100vh;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.nav_content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100% - 70px); // full-height of parent(main) minus height of bottom bar(70px)
+
+    @media only screen and (max-width: 550px) { 
+        height: calc(100% - 150px);
+    }
+}
+
+.active-link {
+                
+    a {
+        color: var(--primary-color) !important;
+        font-weight: bold;
+
+        hr {
+            background-color: var(--primary-color) !important;
+        }
+    }
+}
+
+
+/*  
+dark-mode : bg-color = black
+                text-color = white
+                primary-color = grey-ish
+                secondary-color = #1ECBE1
+
+light-mode : bg-color = white
+             text-color = black
+             primary-color = #E11ECB
+             secondary-color = #1ECBE1
+*/
+

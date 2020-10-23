@@ -1,0 +1,133 @@
+.queue {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 100%;
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    header {
+        font-size: 25px;
+        font-weight: bold;
+        margin: 40px 0 10px 20px;
+        align-items: start;
+    }
+}
+
+.now-playing {
+
+    header {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .pane {
+
+        .name {
+
+            pre {
+                // color: var(--primary-color);
+            }
+        }
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .title_artiste {
+
+        pre:first-child {
+            color: var(--primary-color);
+        }
+    }
+}
+
+.songs {
+    display: flex;
+    flex-direction: column;
+
+    header {
+        font-size: 15px;
+        font-weight: 500;
+    }
+}
+
+.pane {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px 20px;
+
+    i {
+        font-size: 20px;
+        opacity: 0;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .album {
+
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+
+    &:hover {
+        background-color: rgba(rgb(255, 0, 51), .2);
+
+        i {
+            opacity: 1;
+        }
+    }
+
+    .index {
+    }
+
+    div {
+        font-size: 12px;
+    }
+    .name {
+        display: flex;
+        align-items: center;
+        
+        pre {
+            margin-left: 10px;
+            // font-weight: 500;
+        } 
+    }
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 20px;
+
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+    }
+
+    .title_artiste {
+
+        pre:first-child {
+            font-weight: 600;           
+        }
+
+        span {
+            
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+}

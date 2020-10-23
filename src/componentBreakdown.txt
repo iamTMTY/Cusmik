@@ -1,0 +1,147 @@
+
+// TYPICAL CONTENT-PAGE STRUCTURE
+
+-content header component
+-page component start
+    -section component start
+        -header component
+        -cards component start   
+            -card component
+            -card component
+            -card component
+            -...
+        -cards component end
+    -section component end
+
+    -section component start
+        -header component
+        -cards component start   
+            -card component
+            -card component
+            -card component
+            -...
+        -cards component end
+    -section component end
+
+    -...
+-page component end
+
+
+
+// SIDE NAV STRUCTURE
+
+-header(logo) component
+-nav groups component start
+    -nav group component start
+        -nav group header component
+        -nav items component start
+            -nav item component
+            -nav item component
+            -nav item component
+        -nav items component end
+    -nav group component end
+
+    -nav group component start
+        -nav group header component
+        -nav items component start
+            -nav item component
+            -nav item component
+            -nav item component
+        -nav items component end
+    -nav group component end    
+-nav groups component end    
+
+
+
+// BOTTOM BAR STRUCTURE
+
+-song info component
+-song controls component
+-more song controls component
+    
+
+
+// TRENDING
+/*
+<div id="trending" class="page">
+    <section>
+        <header>
+            <h1>Trending for you</h1>
+        </header>
+        <div class="cards">
+            <div class="card">
+                <img src="./imgs/aurora.jpg" alt="song_image">
+                <div class="song_details-action">
+                    <button class="play"><i class="material-icons">P</i></button>
+                    <div class="song_details">
+                        <p>Queendom</p>
+                        <p><span>Aurora</span></p>
+                    </div>
+                    <i class="material-icons">+</i>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+*/
+
+// GENRE
+
+/*
+<div id="genres" class="page">
+    <section>
+        <header>
+            <h1>Your favourite genres</h1>
+        </header>
+        <div class="cards">
+            <div class="card" id="genre-card">
+                <img src="./imgs/aurora.jpg" alt="image">
+                <div class="genre-overlay">
+                    <p>Pop</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <header>
+            <h1>All genres</h1>
+        </header>
+        <div class="cards">
+            <div class="card" id="genre-card">
+                <img src="./imgs/aurora.jpg" alt="image">
+                <div class="genre-overlay">
+                    <p>Pop</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+*/ 
+
+
+// SEARCH 
+
+/*
+<div id="search" class="page">
+    <input type="search" name="search" id="" placeholder="song title, artist name, album name">
+
+    <section>
+        <header>
+            <h1>Trending for you</h1>
+        </header>
+        <div class="cards">
+            <div class="card">
+                <img src="./imgs/aurora.jpg" alt="song_image">
+                <div class="song_details-action">
+                    <button class="play"><i class="material-icons">P</i></button>
+                    <div class="song_details">
+                        <p>Queendom</p>
+                        <p><span>Aurora</span></p>
+                    </div>
+                    <i class="material-icons">+</i>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+*/

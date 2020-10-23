@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <script defer type="module" src="app.js"></script>
+    <title>Cusmik</title>
+</head>
+<body>
+    <main>
+        <header class="mobile-header">
+            <h1 class="logo">CUSMIK</h1>
+        </header>
+        <div class="nav_content">
+            <nav class="side-nav">
+                <div class="logo"><h1>CUSMIK</h1></div>
+                <div class="browse nav-item">
+                    <h1> Browse </h1>
+                    <ul>
+                        <li class="side-link active-side-link"><a href="#home">Home</a></li>
+                        <li class="side-link"><a href="#trending">Trending</a></li>
+                        <li class="side-link"><a href="#latest">Latest Release</a></li>
+                        <li class="side-link"><a href="#genre">Genre</a></li>
+                        <li class="side-link"><a href="#search">Search</a></li>
+                    </ul>
+                </div>
+                <div class="library nav-item">
+                    <h1> Your Library </h1>
+                    <ul>
+                        <li class="side-link"><a href="#favourite">Favourite</a></li>
+                        <li class="side-link"><a href="#history">Play History</a></li>
+                        <li class="side-link"><a href="#playlists">Playlists</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="content">
+                <header>
+                    <div class="content-bar">
+                        <div class="page-nav">
+                            <i class="material-icons">navigate_before</i>
+                            <i class="material-icons">navigate_next</i>
+                        </div>
+                        <div class="user-details">
+                            <img src="./imgs/user.svg" alt="">
+                            <pre>Sign Up</pre>
+                        </div>
+                        <div class="theme-toggle light">
+                            <pre>Go light</pre>
+                            <pre>Go dark</pre>
+                            <div class="container">
+                                <div class="ball"></div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <main class="main-content">
+                    <div class="page">
+                        
+                    </div>
+                    <div class="queue">
+                        <header>Queue</header>
+                        <audio src="" preload="metadata"></audio>
+                        <div class="now-playing">
+                            <header>Now playing: </header>
+                            <div class="pane">
+                                <div class="name">
+                                    <div class="index"></div>
+                                    <div class="details">
+                                        <img src="./imgs/lana.jpg" alt="">
+                                        <div class="title_artiste">
+                                            <pre>Brooklyn Baby</pre>
+                                            <pre class="artiste"><span>Lana Del Rey</span></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                <i class="material-icons">pause</i>
+                                <div class="album">Ultraviolence</div>
+                                <div class="duration">0:00</div>
+                                <i class="material-icons">add</i>
+                            </div>
+                        </div>
+                        <div class="songs">
+                            <header>Next: </header>
+                            <!-- <div class="pane">
+                                <div class="name">
+                                    <div class="index">2</div>
+                                    <div class="details">
+                                        <img src="./imgs/lana.jpg" alt="">
+                                        <div class="title_artiste">
+                                            <pre>Brooklyn Baby</pre>
+                                            <pre class="artiste"><span>Lana Del Rey</span></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                <i class="material-icons">play_arrow</i>
+                                <div class="album">Ultraviolence</div>
+                                <div class="duration">0:00</div>
+                                <i class="material-icons">add</i>
+                            </div>
+                            <div class="pane">
+                                <div class="name">
+                                    <div class="index">3</div>
+                                    <div class="details">
+                                        <img src="./imgs/lana.jpg" alt="">
+                                        <div class="title_artiste">
+                                            <pre>Brooklyn Baby</pre>
+                                            <pre class="artiste"><span>Lana Del Rey</span></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                <i class="material-icons">play_arrow</i>
+                                <div class="album">Ultraviolence</div>
+                                <div class="duration">0:00</div>
+                                <i class="material-icons">add</i>
+                            </div>
+                            <div class="pane">
+                                <div class="name">
+                                    <div class="index">4</div>
+                                    <div class="details">
+                                        <img src="./imgs/lana.jpg" alt="">
+                                        <div class="title_artiste">
+                                            <pre>Brooklyn Baby</pre>
+                                            <pre class="artiste"><span>Lana Del Rey</span></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                <i class="material-icons">play_arrow</i>
+                                <div class="album">Ultraviolence</div>
+                                <div class="duration">0:00</div>
+                                <i class="material-icons">add</i>
+                            </div> -->
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <div class="song-info">
+                <img src="" alt="">
+                <div class="title_artiste">
+                    <pre class="title"><span></span></pre>
+                    <pre class="artiste"><span></span></pre>
+                </div>
+            </div>
+            <div class="control_progress">
+                <div class="controls">
+                    <button class="repeat"><i class="material-icons repeat">repeat</i></button>
+                    <button class="previous"><i class="material-icons previous">skip_previous</i></button>
+                    <button class="play pause"><i class="material-icons play">play_arrow</i></button>
+                    <button class="next"><i class="material-icons next">skip_next</i></button>
+                    <button class="shuffle"><i class="material-icons shuffle">shuffle</i></button>
+                </div>
+                <div class="progress-track">
+                    <pre>0:00</pre>
+                    <div class="song-bar">
+                        <div class="song-progress progress">
+                            <div class="ball"></div>
+                        </div>
+                    </div>
+                    <pre>0:00</pre>
+                </div>
+            </div>
+            <div class="more-control">
+                <i class="material-icons queue-btn">queue_music</i>
+                <div class="volume">
+                    <i class="material-icons volume-btn">volume_up</i>
+                    <div class="volume-bar">
+                        <div class="volume-progress progress"></div>
+                    </div>
+                </div>
+            </div>
+            <audio src=""></audio>
+        </div>
+
+        <div class="mobile-bottom-bar">
+            <div class="song-info">
+                <img src="./imgs/cover.jpg" alt="track-art">
+                <div class="song-details-control">
+                    <div class="controls">
+                        <button class="previous"><i class="material-icons">skip_previous</i></button>
+                        <button class="play pause"><i class="material-icons">play_arrow</i></button>
+                        <button class="next"><i class="material-icons">skip_next</i></button>                        
+                    </div>
+                    <div class="song-details">
+                        <p class="title"><span>Hoax</span></p>
+                        <div class="dot"></div>
+                        <p class="artiste"><span>Taylor Swift</span></p>
+                    </div>
+                </div>
+                <div class="song-progress">
+                    <div class="current-position"></div>
+                </div>
+            </div>
+
+            <nav class="mobile-nav">
+                <ul>
+                    <li class="mobile-link active-link"><a href="#home"><i class="material-icons">home</i>Home</a></li>
+                    <li class="mobile-link"><a href="#trending"><i class="material-icons">trending_up</i>Trending</a></li>
+                    <li class="mobile-link"><a href="#latest"><i class="material-icons">new_releases</i>Latest</a></li>
+                    <li class="mobile-link"><a href="#genre"><i class="material-icons">face</i>Genre</a></li>
+                    <li class="mobile-link"><a href="#search"><i class="material-icons">search</i>Search</a></li>
+                    <li class="mobile-link"><a href="#library"><i class="material-icons">library_add</i>Library</a></li>
+                </ul>
+            </nav>
+        </div>
+    </main>
+</body>
+</html>

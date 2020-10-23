@@ -1,0 +1,15 @@
+.mobile-header {
+    display: none;
+}
+
+@media only screen and (max-width: 550px) { 
+    .mobile-header {
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        background-color: var(--bg-color);
+        color: var(--primary-color);
+        box-shadow: -2px -2px 10px 0px var(--card-color)/*rgba($color: rgb(255, 0, 51), $alpha: 0.4)*/;
+
+    }
+}
