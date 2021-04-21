@@ -1,0 +1,162 @@
+.card {
+  padding: 2px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: var(--card-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover button.play {
+  opacity: 1;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card-details {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 10px 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (max-width: 550px) {
+  .card-details {
+    padding: 3px;
+  }
+}
+
+.card-play {
+  position: absolute;
+  top: -45px;
+  right: 5px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 0, 51, 0.7);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+}
+
+@media only screen and (max-width: 550px) {
+  .card-play {
+    width: 25px;
+    height: 25px;
+    top: -28px;
+    right: 2px;
+  }
+}
+
+.card-play i {
+  font-size: 25px;
+  color: var(--white);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 550px) {
+  .card-play i {
+    font-size: 15px;
+  }
+}
+
+.card-add {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  max-height: max-content;
+}
+
+.card-add i {
+  color: var(--primary-color);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 550px) {
+  .card-add i {
+    font-size: 20px;
+  }
+}
+
+.add-container {
+  position: absolute;
+  width: max-content;
+  transition: all 14s ease;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-color);
+  z-index: 5;
+  border: 1px solid var(--text-color);
+}
+
+.add-container div {
+  padding: 5px 10px;
+  background-color: var(--card-color);
+  color: var(--text-color);
+}
+
+.add-container div:hover {
+  cursor: pointer;
+  background-color: rgba(255, 0, 51, 0.1);
+}
+
+.card-title-artiste {
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-title {
+  margin-bottom: 5px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 550px) {
+  .card-title {
+    font-size: .5rem;
+  }
+}
+
+.card-title, .card-artiste {
+  max-width: max-content;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: text-indent 3s linear;
+}
+
+.card-artiste {
+  font-weight: 500;
+  font-size: .6rem;
+}
+
+@media only screen and (max-width: 550px) {
+  .card-artiste {
+    font-size: 0.3rem;
+  }
+}
+
+.artiste:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+/*# sourceMappingURL=card.css.map */

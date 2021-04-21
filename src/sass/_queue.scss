@@ -17,32 +17,24 @@
 
 .now-playing {
 
+    
     header {
         font-size: 15px;
         font-weight: 600;
-    }
+    }   
+}
 
-    .pane {
+.title {
+    font-size: 30px;
+}
 
-        .name {
+.title_artiste {
 
-            pre {
-                // color: var(--primary-color);
-            }
-        }
-    }
-
-    .title {
-        font-size: 30px;
-    }
-
-    .title_artiste {
-
-        pre:first-child {
-            color: var(--primary-color);
-        }
+    pre:first-child {
+        color: var(--primary-color);
     }
 }
+
 
 .songs {
     display: flex;
@@ -71,14 +63,7 @@
         }
     }
 
-    .album {
-
-        &:hover {
-            cursor: pointer;
-            text-decoration: underline;
-        }
-    }
-
+    
     &:hover {
         background-color: rgba(rgb(255, 0, 51), .2);
 
@@ -87,22 +72,30 @@
         }
     }
 
-    .index {
-    }
-
     div {
         font-size: 12px;
     }
-    .name {
-        display: flex;
-        align-items: center;
-        
-        pre {
-            margin-left: 10px;
-            // font-weight: 500;
-        } 
+    
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    
+    pre {
+        margin-left: 10px;
+        // font-weight: 500;
+    } 
+}
+
+.album {
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
     }
 }
+
 
 .details {
     display: flex;
@@ -115,19 +108,19 @@
         height: 50px;
         border-radius: 5px;
     }
+}
 
-    .title_artiste {
+.title_artiste {
 
-        pre:first-child {
-            font-weight: 600;           
-        }
+    pre:first-child {
+        font-weight: 600;           
+    }
 
-        span {
-            
-            &:hover {
-                cursor: pointer;
-                text-decoration: underline;
-            }
+    span {
+        
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
         }
     }
 }

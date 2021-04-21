@@ -12,86 +12,78 @@
 // general page styles
 
 .page {
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
     width: 100%;
     padding: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
-
-    header {
-        background-color: transparent;
-
-        @media only screen and (max-width: 550px) { 
-            font-size: 10px;
-        }
-    }
+}
 
 
-    // styles the navigation links on a page
-    nav {
-        padding: 10px 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-
-        ul {
-            width: 70%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-
-            .link {
-
-                a {
-                    display: flex;
-                    flex-direction: column;
-                    font-weight: bold;
-
-                    hr {
-                        width: 100%;
-                        height: 5px;
-                        border: none;
-                        background-color: transparent;
-                    }
-                }
-
-                &:hover a{
-                    color: var(--primary-color);
-                }
-            }
-        }
-    }
-
-
-    // styles page sections
+// styles page sections
     
-    section {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding-bottom: 40px;
+.page-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px 0 50px;
+}
+
+.page-section-header {
+    
+    
+    h1 {
+        font-size: 25px;
 
         @media only screen and (max-width: 550px) { 
-            // padding: 20px 0;
-        }
-
-        header {
-            box-shadow: none;
-            display: flex;
-            align-items: flex-start;
-            
-
-            h1 {
-                font-size: 25px;
-
-                @media only screen and (max-width: 550px) { 
-                    font-size: 15px;
-                }
-            }
+            font-size: 15px;
         }
     }
 }
+
+// styles the navigation links on a page
+.page-links {
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    ul {
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+.page-link {
+
+    a {
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+
+        hr {
+            width: 100%;
+            height: 5px;
+            border: none;
+            background-color: transparent;
+        }
+    }
+
+    &:hover a{
+        color: var(--primary-color);
+    }
+}
+
+// header {
+//     background-color: transparent;
+
+//     @media only screen and (max-width: 550px) { 
+//         font-size: 10px;
+//     }
+// }
 
 
 .cards {
@@ -101,206 +93,11 @@
     gap: 10px;
     justify-content: space-evenly;
     align-items: start;
-    padding: 20px 0;
+    // padding: 20px 0;
 
     @media only screen and (max-width: 550px) { 
         grid-template-columns: repeat(auto-fill, minmax(90px, .5fr));
         padding: 10px 0;
-    }
-}
-
-
-// card component styles
-.card {
-    padding: 2px;
-    margin: 10px 0;
-    border-radius: 5px;
-    background-color: var(--card-color);
-    color: var(--text-color);
-    // overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-
-    img {
-        width: 100%;
-        height: auto;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-    }
-
-    &:hover {
-
-        .song_details-action {
-
-            button.play {
-                opacity: 1;
-            }
-        }
-    }
-}
-
-.song_details-action {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    // height: 30%;
-    width: 100%;
-    padding: 10px 5px;
-    justify-content: space-between;
-    align-items: center;
-
-    @media only screen and (max-width: 550px) { 
-        padding: 3px;
-    }
-
-    button {
-    }
-
-    button.add {
-        position: relative;
-        border: none;
-        background-color: transparent;
-        max-height: max-content;
-        
-        i {
-        color: var(--primary-color);
-        font-size: 30px;
-        cursor: pointer;
-
-            @media only screen and (max-width: 550px) { 
-                font-size: 20px;
-            }
-        }
-
-        .add-container {
-            position: absolute;
-            width: max-content;
-            transition: all 14s ease;
-            display: flex;
-            flex-direction: column;
-            background-color: var(--card-color);
-            z-index: 5;
-            border: 1px solid var(--text-color);
-
-            div {
-                padding: 5px 10px;
-                background-color: var(--card-color);
-                color: var(--text-color);
-
-                &:hover {
-                    cursor: pointer;
-                    background-color: rgba(rgb(255, 0, 51), .1);
-                }
-            }
-        }
-    }
-
-    button.play {
-        position: absolute;
-        top: -45px;
-        right: 5px;
-        z-index: 1;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: rgba($color: rgb(255, 0, 51), $alpha: 0.7);
-        // margin: 2px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        color: var(--white);
-        border: none;
-        cursor: pointer;
-        overflow: hidden;
-        opacity: 0;
-
-
-        @media only screen and (max-width: 550px) { 
-            width: 25px;
-            height: 25px;
-            top: -28px;
-            right: 2px;
-        }
-
-        i {
-            font-size: 25px;
-            color: var(--white);
-            cursor: pointer;
-
-            @media only screen and (max-width: 550px) { 
-                font-size: 15px;
-            }
-        }
-    }
-}
-
-
-.song_details {
-    padding: 0;
-    width: 100%;
-    overflow: hidden;
-    
-
-    p:first-child {
-        margin-bottom: 5px;
-        font-size: .8rem;
-        font-weight: 600;
-
-        @media only screen and (max-width: 550px) { 
-            font-size: .5rem;
-        }
-
-        &:hover {
-            cursor: pointer;
-            text-decoration: underline;
-        }
-    }
-
-    p{
-        font-weight: 500;
-        font-size: .6rem;
-        max-width: max-content;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        transition: text-indent 3s linear;
-
-        @media only screen and (max-width: 550px) { 
-            font-size: 0.3rem;
-        }
-
-        span:hover {
-            cursor: pointer;
-            text-decoration: underline;
-        }
-    }
-}
-
-// genreCard component style
-
-#genre-card {
-    position: relative;
-
-    img {
-        border-radius: 5px;
-    }
-
-    .genre-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(var(--black), 0.4);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        color: var(--white);
-        font-weight: 600;
     }
 }
 
