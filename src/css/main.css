@@ -922,14 +922,20 @@ button.play i {
   padding: 0;
   box-sizing: border-box;
   outline: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   user-select: none;
   scroll-behavior: smooth;
+}
+
+html {
+  overflow: hidden;
+  height: 100vh;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  overflow: hidden;
   height: 100vh;
 }
 
