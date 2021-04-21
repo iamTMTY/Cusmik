@@ -66,6 +66,15 @@
   justify-content: center;
 }
 
+.mobile-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  margin: 5px;
+}
+
 button.play {
   width: 35px;
   height: 35px;
@@ -76,6 +85,16 @@ button.play {
 button.play i {
   font-size: 20px;
   color: var(--white);
+}
+
+button.previous,
+button.next {
+  background-color: transparent;
+}
+
+button.previous i,
+button.next i {
+  color: var(--text-color);
 }
 
 .control-btn {
@@ -120,7 +139,8 @@ button.play i {
   border-radius: 10px;
 }
 
-.song-progress, .volume-progress {
+.song-progress,
+.volume-progress {
   position: absolute;
   height: 100%;
   background-color: var(--primary-color);
@@ -929,14 +949,14 @@ button.play i {
 
 html {
   overflow: hidden;
-  height: 100vh;
+  height: 100%;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
   overflow: hidden;
-  height: 100vh;
+  height: 100%;
 }
 
 a {
