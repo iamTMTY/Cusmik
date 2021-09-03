@@ -1,0 +1,148 @@
+.modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba($color: #000000, $alpha: 0.5);
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.playlist-modal {
+	height: 60%;
+	width: 60%;
+	background-color: var(--bg-color);
+	border-radius: 20px;
+	padding: 30px;
+}
+
+.choose_playlist-modal {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.playlist-btns {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 50px;
+}
+
+.cancel-btn {
+	height: max-content;
+	width: max-content;
+	padding: 0.5rem 1rem;
+	color: var(--text-color);
+	background-color: var(--card-color);
+	border-radius: 500px;
+	border: none;
+}
+
+.add_new_playlist-modal {
+	width: 100%;
+	height: 100%;
+}
+
+.form_error {
+	color: red;
+	font-size: 0.8rem;
+}
+
+.add_new_playlist-btn {
+	padding: 0.5rem 1rem;
+	color: var(--black);
+	background-color: var(--secondary-color);
+	border-radius: 500px;
+	border: none;
+	font-weight: 500;
+}
+
+.add_playlist_form {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	input[type="text"] {
+		border-radius: 500px;
+		width: 100%;
+		padding: 0.3rem 1rem;
+		font-size: 1rem;
+		border: 2px solid var(--card-color);
+	}
+
+	input[type="submit"] {
+		// width: 30%;
+		min-width: max-content;
+		padding: 0.5rem 2rem;
+		border-radius: 500px;
+		border: none;
+		// font-size: 1rem;
+		color: var(--white);
+		background-color: var(--primary-color);
+	}
+}
+
+.playlists {
+	width: 100%;
+}
+
+.playlist_option {
+	padding: 4px 0 2px;
+	border-bottom: 1px solid var(--card-color);
+	border-top: 1px solid var(--card-color);
+	cursor: pointer;
+	width: 100%;
+
+	&:hover {
+		background-color: var(--card-color);
+	}
+}
+
+// mobile modal
+
+.add-container-mobile {
+	position: fixed;
+	display: flex;
+	opacity: 0;
+	align-items: flex-end;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(#000, 0.5);
+	z-index: 5;
+	transition: opacity 0.2s linear;
+}
+
+.add-content-mobile {
+	background-color: var(--bg-color);
+	width: 100%;
+	padding: 15px 0;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	overflow: hidden;
+	transform: translateY(100%);
+	transition: all 0.2s linear;
+
+	& > div {
+		padding: 10px 0 10px 30px;
+		display: flex;
+		// justify-content: center;
+		align-items: center;
+		overflow: hidden;
+
+		&:hover {
+			background-color: var(--card-color);
+		}
+	}
+}

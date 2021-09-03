@@ -1,0 +1,21 @@
+.modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlist-modal {
+  height: 60%;
+  width: 60%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+}
+/*# sourceMappingURL=modal.css.map */

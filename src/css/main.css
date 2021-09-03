@@ -134,7 +134,6 @@ button.next i {
   background-color: #666666;
   margin: 0 10px;
   display: flex;
-  justify-content: center;
   align-items: center;
   border-radius: 10px;
 }
@@ -454,9 +453,16 @@ button.next i {
 
 .page {
   width: 100%;
+  min-height: 100%;
   padding: 10px;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+@media only screen and (max-width: 550px) {
+  .page {
+    padding: 0 10px;
+  }
 }
 
 .page-section {
@@ -464,6 +470,12 @@ button.next i {
   flex-direction: column;
   width: 100%;
   margin: 20px 0 50px;
+}
+
+@media only screen and (max-width: 550px) {
+  .page-section {
+    margin: 0;
+  }
 }
 
 .page-section-header h1 {
@@ -524,6 +536,8 @@ button.next i {
 }
 
 #search {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -539,13 +553,33 @@ button.next i {
   background-position-x: 10px;
 }
 
+#search input::-webkit-search-cancel-button {
+  display: none;
+}
+
 @media only screen and (max-width: 550px) {
   #search input {
     width: 100%;
-    font-size: .5rem;
+    font-size: 0.5rem;
     background-size: 10px;
     padding: 5px 10px 5px 25px;
   }
+}
+
+.libraryLink {
+  width: 100%;
+  border-bottom: 2px solid var(--card-color);
+}
+
+.libraryLink a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.libraryLink:hover {
+  background-color: var(--card-color);
 }
 
 .mobile-bottom-bar {
@@ -593,6 +627,7 @@ button.next i {
   .mobile-bottom-bar .song-info .song-details-control div p {
     font-size: 10px;
     width: max-content;
+    min-height: 1rem;
   }
   .mobile-bottom-bar .song-info .song-details-control div p:first-child {
     font-size: 12px;
@@ -766,7 +801,31 @@ button.next i {
   text-decoration: underline;
 }
 
+.playlist_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.add_playlist_btn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.view_playlist {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
 .card {
+  position: relative;
   padding: 2px;
   margin: 10px 0;
   border-radius: 5px;
@@ -778,8 +837,10 @@ button.next i {
   align-items: center;
 }
 
-.card:hover button.play {
-  opacity: 1;
+@media only screen and (min-width: 551px) {
+  .card:hover button.card-play {
+    opacity: 1;
+  }
 }
 
 .card-img {
@@ -826,10 +887,7 @@ button.next i {
 
 @media only screen and (max-width: 550px) {
   .card-play {
-    width: 25px;
-    height: 25px;
-    top: -28px;
-    right: 2px;
+    display: none;
   }
 }
 
@@ -860,7 +918,7 @@ button.next i {
 
 @media only screen and (max-width: 550px) {
   .card-add i {
-    font-size: 20px;
+    display: none;
   }
 }
 
@@ -894,17 +952,18 @@ button.next i {
 
 .card-title {
   margin-bottom: 5px;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 600;
 }
 
 @media only screen and (max-width: 550px) {
   .card-title {
-    font-size: .5rem;
+    font-size: 0.6rem;
   }
 }
 
-.card-title, .card-artiste {
+.card-title,
+.card-artiste {
   max-width: max-content;
   overflow: hidden;
   white-space: nowrap;
@@ -914,12 +973,12 @@ button.next i {
 
 .card-artiste {
   font-weight: 500;
-  font-size: .6rem;
+  font-size: 0.6rem;
 }
 
 @media only screen and (max-width: 550px) {
   .card-artiste {
-    font-size: 0.3rem;
+    font-size: 0.5rem;
   }
 }
 
@@ -928,10 +987,176 @@ button.next i {
   text-decoration: underline;
 }
 
+.mobile-play {
+  display: none;
+}
+
+@media only screen and (max-width: 550px) {
+  .mobile-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    font-size: 3rem;
+    z-index: 3;
+    color: var(--bg-color);
+    opacity: 0.6;
+  }
+}
+
+.modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlist-modal {
+  height: 60%;
+  width: 60%;
+  background-color: var(--bg-color);
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.choose_playlist-modal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playlist-btns {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.cancel-btn {
+  height: max-content;
+  width: max-content;
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  background-color: var(--card-color);
+  border-radius: 500px;
+  border: none;
+}
+
+.add_new_playlist-modal {
+  width: 100%;
+  height: 100%;
+}
+
+.form_error {
+  color: red;
+  font-size: 0.8rem;
+}
+
+.add_new_playlist-btn {
+  padding: 0.5rem 1rem;
+  color: var(--black);
+  background-color: var(--secondary-color);
+  border-radius: 500px;
+  border: none;
+  font-weight: 500;
+}
+
+.add_playlist_form {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add_playlist_form input[type="text"] {
+  border-radius: 500px;
+  width: 100%;
+  padding: 0.3rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--card-color);
+}
+
+.add_playlist_form input[type="submit"] {
+  min-width: max-content;
+  padding: 0.5rem 2rem;
+  border-radius: 500px;
+  border: none;
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+.playlists {
+  width: 100%;
+}
+
+.playlist_option {
+  padding: 4px 0 2px;
+  border-bottom: 1px solid var(--card-color);
+  border-top: 1px solid var(--card-color);
+  cursor: pointer;
+  width: 100%;
+}
+
+.playlist_option:hover {
+  background-color: var(--card-color);
+}
+
+.add-container-mobile {
+  position: fixed;
+  display: flex;
+  opacity: 0;
+  align-items: flex-end;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  transition: opacity 0.2s linear;
+}
+
+.add-content-mobile {
+  background-color: var(--bg-color);
+  width: 100%;
+  padding: 15px 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: all 0.2s linear;
+}
+
+.add-content-mobile > div {
+  padding: 10px 0 10px 30px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.add-content-mobile > div:hover {
+  background-color: var(--card-color);
+}
+
 :root {
   --bg-color: #fff;
   --text-color: #000;
   --primary-color: rgb(255, 0, 51);
+  --secondary-color: rgb(250, 183, 0);
   --white: white;
   --black: black;
   --card-color: rgb(207, 206, 206);
@@ -972,6 +1197,10 @@ main {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+button {
+  font-weight: bold;
 }
 
 .nav_content {

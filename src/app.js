@@ -1,71 +1,176 @@
+import AudioPlayer from "./js/AudioPlayer/AudioPlayer.js";
+import NowPlaying from "./js/AudioPlayer/NowPlaying.js";
+import { Playlist } from "./js/AudioPlayer/Playlist.js";
+import { Playlist as PlaylistPage } from "./js/pages/Playlist.js";
+import { Components } from "./js/Components/Components.js";
+import { PlaylistModal } from "./js/Components/PlaylistModal.js";
 import { Utility } from "./js/Utility.js";
-import { AudioPlayer } from "./js/AudioPlayer.js";
+import { Favourite } from "./js/AudioPlayer/Favourite.js";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+	document.location.hash = document.location.hash === "" ? "home" : document.location.hash;
 
+	// loads page content when page loads
+	Utility.loadLinkContent(document.location.hash.slice(1));
 
-    // side-link event listener
-    document.querySelectorAll('.side-link').forEach(link => {
-        link.addEventListener('click', (e) => {
+	// sets the current page color when page loads
+	document
+		.querySelector(`a[href="${document.location.hash}"]`)
+		.parentElement.classList.add("active-side-link");
 
-            // changes link color
-            Utility.addLinkStyle(e, 'side-link', 'active-side-link')
+	// side-link event listener
+	document.querySelectorAll(".side-link").forEach((link) => {
+		link.addEventListener("click", (e) => {
+			// changes link color
+			Utility.addLinkStyle(e, "side-link", "active-side-link");
 
-            // loads the content in a page
-            Utility.loadLinkContent(e.target.hash.slice(1))
-        
-        })
-    })
+			// loads the content
+			Utility.loadLinkContent(e.target.hash.slice(1));
+		});
+	});
 
+	// mobile add modal
+	const mobileAddModal = document.querySelector(".add-container-mobile");
+	const mobileAddModalContent = document.querySelector(".add-content-mobile");
+	const mainContent = document.querySelector(".main-content");
+	mobileAddModal.addEventListener("click", (e) => {
+		if (e.target.classList.contains("add-container-mobile")) {
+			mobileAddModal.style.left = "100%";
+			mobileAddModal.style.opacity = "0";
+			mobileAddModalContent.style.transform = "translateY(100%)";
+		}
+	});
 
-    // main-content events
-    document.querySelector('.main-content').addEventListener('click', (e) => {
+	// main-content mousedown events
+	mainContent.addEventListener("pointerdown", (e) => {
+		const card = e.target.parentElement;
+		if (e.target.classList.contains("mobile-play")) {
+			const start = new Date();
 
-        const card = Utility.getTarget(e).parentElement.parentElement
+			const showOptions = setTimeout(() => {
+				mobileAddModal.style.left = "0";
+				mobileAddModal.style.opacity = "1";
+				mobileAddModalContent.style.transform = "translateY(0)";
+			}, 500);
 
-        if (e.target.classList.contains('play')) {
-            AudioPlayer.playCard(card)
-        } else if (e.target.classList.contains('add')) {
-            Utility.addOptions(e)
-        }
-    })
+			mainContent.addEventListener(
+				"pointermove",
+				(e) => {
+					clearTimeout(showOptions);
+				},
+				{ once: true }
+			);
+			mainContent.addEventListener(
+				"pointerup",
+				(e) => {
+					const end = new Date();
+					console.log(end - start);
+					if (end - start < 500) {
+						clearTimeout(showOptions);
+						NowPlaying.songs = [card];
+						NowPlaying.play(0);
+					}
+				},
+				{ once: true }
+			);
+		}
+	});
 
+	// main-content click events
+	mainContent.addEventListener("click", (e) => {
+		let card = Utility.getTarget(e).parentElement.parentElement;
 
-    // mobile-link event listener
-    document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', (e) => {
+		if (e.target.classList.contains("play")) {
+			NowPlaying.songs = [card];
+			// console.log(card, NowPlaying.songs);
+			NowPlaying.play(0);
+		} else if (e.target.classList.contains("add")) {
+			Utility.addOptions(e);
+		} else if (e.target.classList.contains("add_new_playlist-btn")) {
+			document.querySelector(".playlist-modal").innerHTML = PlaylistModal.addNewPlaylist();
+			document
+				.querySelector(".add_playlist_form")
+				.addEventListener("submit", Playlist.addNewPlaylist);
+		} else if (e.target.classList.contains("cancel-btn")) {
+			document.querySelector(".modal").remove();
+		} else if (e.target.classList.contains("add-to-playlist")) {
+			card = e.target.parentElement.parentElement.parentElement.parentElement;
+			PlaylistModal.create("choose");
+			PlaylistModal.currentCard = card;
+			Utility.removeAddContainer();
+		} else if (e.target.classList.contains("add-to-queue")) {
+			card = e.target.parentElement.parentElement.parentElement.parentElement;
+			NowPlaying.addToNowPlaying([card]);
+			Utility.removeAddContainer();
+		} else if (e.target.classList.contains("add-to-favourite")) {
+			card = e.target.parentElement.parentElement.parentElement.parentElement;
+			Favourite.addToFavourite(card);
+			Utility.removeAddContainer();
+		} else if (e.target.classList.contains("playlist_option")) {
+			Playlist.addToPlaylist(e.target.textContent, PlaylistModal.currentCard);
+			document.querySelector(".modal").remove();
+			//show confirmation message
+		} else if (e.target.classList.contains("add_playlist_btn")) {
+			PlaylistModal.create("add");
+			document.querySelector(".add_playlist_form").addEventListener("submit", (e) => {
+				const isEmpty = Object.keys(Playlist.playlist) < 1 ? true : false;
+				Playlist.addNewPlaylist(e);
 
-            // changes link color
-            Utility.addLinkStyle(e, 'mobile-link', 'active-link')
+				if (isEmpty) {
+					document.querySelector(".no-playlist").remove();
+					document.querySelector(".page-section").innerHTML += Components.playlistCard();
+				} else {
+					const playlist = Object.keys(Playlist.playlist);
+					document.querySelector(".cards").innerHTML += Components.playlistCardMarkup([
+						playlist[playlist.length - 1]
+					]);
+				}
+			});
+		} else if (e.target.classList.contains("view_playlist")) {
+			PlaylistPage.viewPlaylist(e.target.dataset.playlist);
+		} else if (e.target.classList.contains("play_playlist")) {
+			console.log(e.target, e.target.dataset);
+			NowPlaying.songs = Playlist.playlist[PlaylistPage.currentPlaylist];
+			console.log(NowPlaying.songs, e.target.dataset.position);
+			NowPlaying.play(parseInt(e.target.dataset.position));
+		}
+	});
 
-            // loads the content in a page
-            const page = Utility.getTarget(e).hash.slice(1)
-            Utility.loadLinkContent(page)
-        })
-    })
+	// mobile-link event listener
+	document.querySelectorAll(".mobile-link").forEach((link) => {
+		link.addEventListener("click", (e) => {
+			// changes link color
+			Utility.addLinkStyle(e, "mobile-link", "active-link");
 
-    // Dark mode toggler
-    document.querySelector('.theme-toggle').addEventListener('click', Utility.theme)
+			// loads the content in a page
+			const page = Utility.getTarget(e).hash.slice(1);
+			Utility.loadLinkContent(page);
+		});
+	});
 
-    // audio events
-    AudioPlayer.audio.addEventListener('ended', AudioPlayer.songEnd)
-    AudioPlayer.audio.addEventListener('timeupdate', AudioPlayer.updateTime)
-    AudioPlayer.audio.addEventListener('loadedmetadata', AudioPlayer.updateTime)
-    // const progressTrack = document.querySelector('.progress-track')
-    // const bar = progressTrack.querySelector('.bar')
+	// Dark mode toggler
+	document.querySelector(".theme-toggle").addEventListener("click", Utility.theme);
 
-    // bar.addEventListener('mousedown', AudioPlayer.seekStart)
+	// audio events
+	AudioPlayer.audio.addEventListener("ended", NowPlaying.playNext);
+	AudioPlayer.audio.addEventListener("timeupdate", AudioPlayer.updateTime);
+	AudioPlayer.audio.addEventListener("loadedmetadata", AudioPlayer.updateTime);
+	// const progressTrack = document.querySelector('.progress-track')
+	// const bar = progressTrack.querySelector('.bar')
 
-    // bottom bar events
-    const bottomBar = document.querySelector('.bottom-bar')
-    bottomBar.addEventListener('click', Utility.bottomBarEventDelegator)
-    bottomBar.addEventListener('mousedown', (e) => {
-        e.target.classList.contains('song-bar') || e.target.classList.contains('song-progress') ?
-        AudioPlayer.seekStart(e) :
-        e.target.classList.contains('volume-bar') || e.target.classList.contains('volume-progress') ?
-        AudioPlayer.controlVolume(e) :
-        false
-    })
-})
+	// bar.addEventListener('mousedown', AudioPlayer.seekStart)
 
-
+	// bottom bar events
+	const bottomBar = document.querySelector(".bottom-bar");
+	bottomBar.addEventListener("click", Utility.bottomBarEventDelegator);
+	bottomBar.addEventListener("mousedown", (e) => {
+		if (NowPlaying.nowPlaying === null) {
+			return;
+		}
+		e.target.classList.contains("song-bar") || e.target.classList.contains("song-progress")
+			? AudioPlayer.seekStart(e)
+			: e.target.classList.contains("volume-bar") || e.target.classList.contains("volume-progress")
+			? AudioPlayer.controlVolume(e)
+			: false;
+	});
+});

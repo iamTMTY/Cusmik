@@ -1,14 +1,16 @@
-import { Components } from "../Components.js";
+import { Components } from "../Components/Components.js";
+import { songs } from "../Database/Data.js";
 
 export class Trending extends Components {
+	static main = document.querySelector(".main-content");
 
-    static page = document.querySelector('.page')
-
-    static create = (sections) => {
-        this.page.innerHTML = `
-            <div id="trending">
-                ${this.section('trending', sections)}
-            </div>`
-    }
-
+	static create = () => {
+		this.main.innerHTML = `
+            <div class="page" id="trending">
+                <section class="page-section">
+                    <header class="page-section-header"><h1>Trending</h1></header>
+                    <div class="cards">${this.card(songs, "play")}</div>
+                </section>
+            </div>`;
+	};
 }

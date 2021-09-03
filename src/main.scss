@@ -5,12 +5,15 @@
 @import "./sass/mobile-bottom-bar";
 @import "./sass/mobile-header";
 @import "./sass/queue";
+@import "./sass/playlist";
 @import "./sass/components/card";
+@import "./sass/components/modal";
 
 :root {
 	--bg-color: #fff;
 	--text-color: #000;
 	--primary-color: rgb(255, 0, 51);
+	--secondary-color: rgb(250, 183, 0);
 	// --primary-color: rgb(0, 255, 191);
 	// --secondary-color: rgb(247, 113, 140);
 	--white: white;
@@ -54,6 +57,10 @@ main {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+}
+
+button {
+	font-weight: bold;
 }
 
 .nav_content {

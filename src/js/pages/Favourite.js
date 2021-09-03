@@ -1,22 +1,24 @@
-import { Components } from "../Components.js";
+import { Components } from "../Components/Components.js";
 import { Utility } from "../Utility.js";
+import { Favourite as AudioFavourite } from "../AudioPlayer/Favourite.js";
+import { songs } from "../Database/Data.js";
 
 export class Favourite extends Components {
+	static main = document.querySelector(".main-content");
 
-    static main = document.querySelector('.main-content')
+	static create = (links) => {
+		const favouriteSongs = AudioFavourite.songs.map((id) => {
+			return songs[id - 1];
+		});
 
-    static create = (links) => {
-        this.main.innerHTML = `
-            <div class="page" id="favourite">
-                ${this.navigation(['Songs', 'Albums', 'Artistes'])}
-            </div>`
-
-        // add listener to the links in favourite   
-        document.querySelectorAll('.link').forEach(link => {
-
-            link.addEventListener('click', (e) => {
-                Utility.addLinkStyle(e, 'link', 'active-link')
-            })
-        })
-    }
+		this.main.innerHTML = `
+			<div class="page" id="home">
+					<section class="page-section">
+							<header class="page-section-header">
+								<h1>Your Favourite Songs</h1>
+							</header>
+							<div class="cards">${this.card(favouriteSongs, "play")}</div>
+					</section>
+			</div>`;
+	};
 }
