@@ -32,7 +32,7 @@ export class Playlist extends Components {
 		if (playlistSongs.length < 1) {
 			section.innerHTML = `
 				<header class="page-section-header playlist_header">
-					<h1> ${playlistName} </h1>
+					<h1> Playlists > ${playlistName} </h1>
 				</header>
 				<p> You have no songs in this playlist </p>
 			`;
@@ -40,7 +40,7 @@ export class Playlist extends Components {
 			this.currentPlaylist = playlistName;
 			section.innerHTML = `
 			<header class="page-section-header playlist_header">
-				<h1> ${playlistName} </h1>
+				<h1> Playlists > ${playlistName} </h1>
 			</header>
 			<div class="cards">
 				${this.card(playlistSongs, "play_playlist")} 

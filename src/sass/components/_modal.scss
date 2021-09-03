@@ -9,14 +9,23 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	@media only screen and (max-width: 550px) {
+		position: fixed;
+	}
 }
 
 .playlist-modal {
-	height: 60%;
+	height: max-content;
 	width: 60%;
 	background-color: var(--bg-color);
 	border-radius: 20px;
 	padding: 30px;
+
+	@media only screen and (max-width: 550px) {
+		width: 80%;
+		padding: 30px 20px;
+	}
 }
 
 .choose_playlist-modal {
@@ -34,6 +43,16 @@
 	justify-content: center;
 	gap: 10px;
 	margin-top: 50px;
+
+	@media only screen and (max-width: 550px) {
+		flex-direction: column-reverse;
+		align-items: center;
+
+		button,
+		input[type="submit"] {
+			width: 80%;
+		}
+	}
 }
 
 .cancel-btn {
@@ -42,7 +61,7 @@
 	padding: 0.5rem 1rem;
 	color: var(--text-color);
 	background-color: var(--card-color);
-	border-radius: 500px;
+	border-radius: 10px;
 	border: none;
 }
 
@@ -60,9 +79,10 @@
 	padding: 0.5rem 1rem;
 	color: var(--black);
 	background-color: var(--secondary-color);
-	border-radius: 500px;
+	border-radius: 10px;
 	border: none;
 	font-weight: 500;
+	width: max-content;
 }
 
 .add_playlist_form {
@@ -73,7 +93,7 @@
 	align-items: center;
 
 	input[type="text"] {
-		border-radius: 500px;
+		border-radius: 10px;
 		width: 100%;
 		padding: 0.3rem 1rem;
 		font-size: 1rem;
@@ -84,7 +104,7 @@
 		// width: 30%;
 		min-width: max-content;
 		padding: 0.5rem 2rem;
-		border-radius: 500px;
+		border-radius: 10px;
 		border: none;
 		// font-size: 1rem;
 		color: var(--white);

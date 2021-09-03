@@ -2,6 +2,7 @@ import AudioPlayer from "./AudioPlayer.js";
 import { QueuePage } from "../pages/QueuePage.js";
 import { Utility } from "../Utility.js";
 import { History } from "./History.js";
+import InfoModal from "../Components/InfoModal.js";
 
 export default class NowPlaying {
 	static audio = document.querySelector("#music_player");
@@ -20,7 +21,12 @@ export default class NowPlaying {
 	};
 
 	static addToNowPlaying = (songs) => {
+		const isEmpty = this.songs.length < 1;
 		this.songs = [...this.songs, ...songs];
+		InfoModal.show("added song to queue");
+		if (isEmpty) {
+			this.play(0);
+		}
 	};
 
 	static playNext = () => {

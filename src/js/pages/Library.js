@@ -13,7 +13,7 @@ export class Library extends Components {
               <h1>Your Library</h1>
           </header>
           <ul>
-            <li class="libraryLink"><a href="#playlist">Playlist</a></li>
+            <li class="libraryLink"><a href="#playlists">Playlist</a></li>
             <li class="libraryLink"><a href="#favourite">Favourite</a></li>
             <li class="libraryLink"><a href="#history">Play History</a></li>
           </ul>
@@ -22,6 +22,7 @@ export class Library extends Components {
 
 		document.querySelectorAll(".libraryLink").forEach((link) => {
 			link.addEventListener("click", (e) => {
+				// console.log(e.target.hash.slice(1));
 				Utility.loadLinkContent(e.target.hash.slice(1));
 			});
 		});

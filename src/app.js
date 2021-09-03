@@ -6,6 +6,7 @@ import { Components } from "./js/Components/Components.js";
 import { PlaylistModal } from "./js/Components/PlaylistModal.js";
 import { Utility } from "./js/Utility.js";
 import { Favourite } from "./js/AudioPlayer/Favourite.js";
+import MobileFunctionalities from "./js/Utilities/mobileFunctionalities.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 	document.location.hash = document.location.hash === "" ? "home" : document.location.hash;
@@ -33,11 +34,30 @@ document.addEventListener("DOMContentLoaded", () => {
 	const mobileAddModal = document.querySelector(".add-container-mobile");
 	const mobileAddModalContent = document.querySelector(".add-content-mobile");
 	const mainContent = document.querySelector(".main-content");
+
+	// close mobile add modal
 	mobileAddModal.addEventListener("click", (e) => {
 		if (e.target.classList.contains("add-container-mobile")) {
-			mobileAddModal.style.left = "100%";
-			mobileAddModal.style.opacity = "0";
-			mobileAddModalContent.style.transform = "translateY(100%)";
+			MobileFunctionalities.closemobileModal();
+		}
+	});
+
+	// select mobile modal options
+
+	mobileAddModalContent.addEventListener("click", (e) => {
+		const card = PlaylistModal.currentCard;
+		if (e.target.classList.contains("play")) {
+			NowPlaying.songs = [card];
+			NowPlaying.play(0);
+			MobileFunctionalities.closemobileModal();
+		} else if (e.target.classList.contains("add-to-queue")) {
+			NowPlaying.addToNowPlaying([card]);
+			MobileFunctionalities.closemobileModal();
+		} else if (e.target.classList.contains("add-to-playlist")) {
+			PlaylistModal.create("choose");
+		} else if (e.target.classList.contains("add-to-favourite")) {
+			Favourite.addToFavourite(card);
+			MobileFunctionalities.closemobileModal();
 		}
 	});
 
@@ -51,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				mobileAddModal.style.left = "0";
 				mobileAddModal.style.opacity = "1";
 				mobileAddModalContent.style.transform = "translateY(0)";
+				PlaylistModal.currentCard = card;
 			}, 500);
 
 			mainContent.addEventListener(
@@ -82,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		if (e.target.classList.contains("play")) {
 			NowPlaying.songs = [card];
-			// console.log(card, NowPlaying.songs);
 			NowPlaying.play(0);
 		} else if (e.target.classList.contains("add")) {
 			Utility.addOptions(e);
@@ -90,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			document.querySelector(".playlist-modal").innerHTML = PlaylistModal.addNewPlaylist();
 			document
 				.querySelector(".add_playlist_form")
-				.addEventListener("submit", Playlist.addNewPlaylist);
+				.addEventListener("submit", (e) => Playlist.addNewPlaylist(e, true));
 		} else if (e.target.classList.contains("cancel-btn")) {
 			document.querySelector(".modal").remove();
 		} else if (e.target.classList.contains("add-to-playlist")) {
@@ -109,12 +129,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		} else if (e.target.classList.contains("playlist_option")) {
 			Playlist.addToPlaylist(e.target.textContent, PlaylistModal.currentCard);
 			document.querySelector(".modal").remove();
+			MobileFunctionalities.closemobileModal();
 			//show confirmation message
 		} else if (e.target.classList.contains("add_playlist_btn")) {
 			PlaylistModal.create("add");
 			document.querySelector(".add_playlist_form").addEventListener("submit", (e) => {
 				const isEmpty = Object.keys(Playlist.playlist) < 1 ? true : false;
-				Playlist.addNewPlaylist(e);
+				Playlist.addNewPlaylist(e, false);
 
 				if (isEmpty) {
 					document.querySelector(".no-playlist").remove();

@@ -1,0 +1,15 @@
+.infoModal {
+	opacity: 0;
+	transform: translateY(-100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	width: 80%;
+	height: 80%;
+	border-radius: 8px;
+	background-color: var(--card-color);
+	color: var(--text-color);
+	font-size: 1rem;
+	transition: all, 0.3s linear;
+}

@@ -134,6 +134,14 @@
 	}
 }
 
+// #library {
+// 	display: none;
+
+// 	@media only screen and (max-width: 550px) {
+// 		display: initial;
+// 	}
+// }
+
 .libraryLink {
 	width: 100%;
 	border-bottom: 2px solid var(--card-color);

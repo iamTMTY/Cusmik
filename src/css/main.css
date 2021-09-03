@@ -289,10 +289,12 @@ button.next i {
 }
 
 .content-header {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .content-bar {
@@ -366,12 +368,12 @@ button.next i {
   flex-direction: row;
   align-items: center;
   font-size: 13px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .theme-toggle pre {
   cursor: pointer;
-  transition: position .5s ease;
+  transition: position 0.5s ease;
 }
 
 @media only screen and (max-width: 550px) {
@@ -389,7 +391,7 @@ button.next i {
   border: none;
   background-color: var(--text-color);
   cursor: pointer;
-  transition: position .5s ease;
+  transition: position 0.5s ease;
 }
 
 @media only screen and (max-width: 550px) {
@@ -420,17 +422,17 @@ button.next i {
 }
 
 .dark {
-  transition: position .5s ease;
+  transition: position 0.5s ease;
 }
 
 .dark pre:nth-child(2) {
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   display: none;
 }
 
 .dark .container .ball {
   right: 2px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .light pre:first-child {
@@ -439,7 +441,7 @@ button.next i {
 
 .light .container .ball {
   left: 2px;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .main-content {
@@ -1003,7 +1005,7 @@ button.next i {
     left: 0;
     font-size: 3rem;
     z-index: 3;
-    color: var(--bg-color);
+    color: var(--white);
     opacity: 0.6;
   }
 }
@@ -1021,12 +1023,25 @@ button.next i {
   justify-content: center;
 }
 
+@media only screen and (max-width: 550px) {
+  .modal {
+    position: fixed;
+  }
+}
+
 .playlist-modal {
-  height: 60%;
+  height: max-content;
   width: 60%;
   background-color: var(--bg-color);
   border-radius: 20px;
   padding: 30px;
+}
+
+@media only screen and (max-width: 550px) {
+  .playlist-modal {
+    width: 80%;
+    padding: 30px 20px;
+  }
 }
 
 .choose_playlist-modal {
@@ -1046,13 +1061,24 @@ button.next i {
   margin-top: 50px;
 }
 
+@media only screen and (max-width: 550px) {
+  .playlist-btns {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .playlist-btns button,
+  .playlist-btns input[type="submit"] {
+    width: 80%;
+  }
+}
+
 .cancel-btn {
   height: max-content;
   width: max-content;
   padding: 0.5rem 1rem;
   color: var(--text-color);
   background-color: var(--card-color);
-  border-radius: 500px;
+  border-radius: 10px;
   border: none;
 }
 
@@ -1070,9 +1096,10 @@ button.next i {
   padding: 0.5rem 1rem;
   color: var(--black);
   background-color: var(--secondary-color);
-  border-radius: 500px;
+  border-radius: 10px;
   border: none;
   font-weight: 500;
+  width: max-content;
 }
 
 .add_playlist_form {
@@ -1084,7 +1111,7 @@ button.next i {
 }
 
 .add_playlist_form input[type="text"] {
-  border-radius: 500px;
+  border-radius: 10px;
   width: 100%;
   padding: 0.3rem 1rem;
   font-size: 1rem;
@@ -1094,7 +1121,7 @@ button.next i {
 .add_playlist_form input[type="submit"] {
   min-width: max-content;
   padding: 0.5rem 2rem;
-  border-radius: 500px;
+  border-radius: 10px;
   border: none;
   color: var(--white);
   background-color: var(--primary-color);
@@ -1150,6 +1177,22 @@ button.next i {
 
 .add-content-mobile > div:hover {
   background-color: var(--card-color);
+}
+
+.infoModal {
+  opacity: 0;
+  transform: translateY(-100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border-radius: 8px;
+  background-color: var(--card-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: all, 0.3s linear;
 }
 
 :root {
