@@ -7,28 +7,18 @@ import { PlaylistModal } from "./js/Components/PlaylistModal.js";
 import { Utility } from "./js/Utility.js";
 import { Favourite } from "./js/AudioPlayer/Favourite.js";
 import MobileFunctionalities from "./js/Utilities/mobileFunctionalities.js";
+import Navigation from "./js/Utilities/navigation.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 	document.location.hash = document.location.hash === "" ? "home" : document.location.hash;
 
 	// loads page content when page loads
-	Utility.loadLinkContent(document.location.hash.slice(1));
+	Navigation.setInitialNav();
 
-	// sets the current page color when page loads
-	document
-		.querySelector(`a[href="${document.location.hash}"]`)
-		.parentElement.classList.add("active-side-link");
-
-	// side-link event listener
-	document.querySelectorAll(".side-link").forEach((link) => {
-		link.addEventListener("click", (e) => {
-			// changes link color
-			Utility.addLinkStyle(e, "side-link", "active-side-link");
-
-			// loads the content
-			Utility.loadLinkContent(e.target.hash.slice(1));
-		});
-	});
+	// sets the current page color when navigating
+	window.onpopstate = () => {
+		Navigation.setNav();
+	};
 
 	// mobile add modal
 	const mobileAddModal = document.querySelector(".add-container-mobile");
@@ -157,18 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
-	// mobile-link event listener
-	document.querySelectorAll(".mobile-link").forEach((link) => {
-		link.addEventListener("click", (e) => {
-			// changes link color
-			Utility.addLinkStyle(e, "mobile-link", "active-link");
-
-			// loads the content in a page
-			const page = Utility.getTarget(e).hash.slice(1);
-			Utility.loadLinkContent(page);
-		});
-	});
-
 	// Dark mode toggler
 	document.querySelector(".theme-toggle").addEventListener("click", Utility.theme);
 
@@ -183,7 +161,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	// bottom bar events
 	const bottomBar = document.querySelector(".bottom-bar");
+	const mobileBottomBar = document.querySelector(".mobile-bottom-bar");
 	bottomBar.addEventListener("click", Utility.bottomBarEventDelegator);
+	mobileBottomBar.addEventListener("click", Utility.bottomBarEventDelegator);
 	bottomBar.addEventListener("mousedown", (e) => {
 		if (NowPlaying.nowPlaying === null) {
 			return;

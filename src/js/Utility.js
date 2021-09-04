@@ -13,23 +13,6 @@ import { PlaylistModal } from "./Components/PlaylistModal.js";
 import { Library } from "./pages/Library.js";
 
 export class Utility {
-	static addLinkStyle = (e, linksClass, activeClass) => {
-		const target = this.getTarget(e);
-		let active = target.parentElement.classList.contains(activeClass);
-		const links = document.querySelectorAll(`.${linksClass}`);
-
-		if (active) {
-			return false;
-		} else {
-			links.forEach((link) => {
-				if (link.classList.contains(activeClass)) {
-					link.classList.remove(activeClass);
-				}
-			});
-			target.parentElement.classList.add(activeClass);
-		}
-	};
-
 	static loadLinkContent = (page) => {
 		switch (page) {
 			case "trending":

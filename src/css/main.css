@@ -322,9 +322,8 @@ button.next i {
 }
 
 @media only screen and (max-width: 550px) {
-  .page-nav i {
-    font-size: 20px;
-    margin: 2px;
+  .page-nav {
+    display: none;
   }
 }
 
@@ -336,13 +335,13 @@ button.next i {
 }
 
 .user-details pre {
-  font-size: 15px;
+  font-size: 1rem;
   cursor: pointer;
 }
 
 @media only screen and (max-width: 550px) {
   .user-details pre {
-    font-size: 10px;
+    font-size: 0.8rem;
   }
 }
 
@@ -354,20 +353,12 @@ button.next i {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 550px) {
-  .user-details img {
-    width: 15px;
-    height: 15px;
-    margin: 0 3px;
-  }
-}
-
 .theme-toggle {
   width: max-content;
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 13px;
+  font-size: 1rem;
   transition: all 0.5s ease;
 }
 
@@ -378,7 +369,7 @@ button.next i {
 
 @media only screen and (max-width: 550px) {
   .theme-toggle pre {
-    font-size: 10px;
+    font-size: 0.8rem;
   }
 }
 
@@ -394,13 +385,6 @@ button.next i {
   transition: position 0.5s ease;
 }
 
-@media only screen and (max-width: 550px) {
-  .theme-toggle .container {
-    width: 20px;
-    height: 10px;
-  }
-}
-
 .theme-toggle .container .ball {
   position: absolute;
   top: 2px;
@@ -411,14 +395,6 @@ button.next i {
   border: none;
   transition: all 1s ease;
   cursor: pointer;
-}
-
-@media only screen and (max-width: 550px) {
-  .theme-toggle .container .ball {
-    top: 1px;
-    width: 8px;
-    height: 8px;
-  }
 }
 
 .dark {
@@ -616,7 +592,7 @@ button.next i {
     height: 100%;
     width: 100%;
   }
-  .mobile-bottom-bar .song-info .song-details-control .controls .play {
+  .mobile-bottom-bar .song-info .song-details-control .controls button.play {
     width: 25px;
     height: 25px;
   }
@@ -1259,12 +1235,12 @@ button {
   }
 }
 
-.active-link a {
+.active-mobile-link a {
   color: var(--primary-color) !important;
   font-weight: bold;
 }
 
-.active-link a hr {
+.active-mobile-link a hr {
   background-color: var(--primary-color) !important;
 }
 
