@@ -209,11 +209,13 @@ button.next i {
   justify-content: center;
   font-size: 20px;
   font-weight: bold;
+  font-family: "Pacifico", cursive;
+  font-size: 2rem;
 }
 
 .logo h1 {
   color: var(--primary-color);
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
 }
 
 .nav-item {
@@ -538,7 +540,6 @@ button.next i {
 @media only screen and (max-width: 550px) {
   #search input {
     width: 100%;
-    font-size: 0.5rem;
     background-size: 10px;
     padding: 5px 10px 5px 25px;
   }
@@ -566,12 +567,97 @@ button.next i {
 
 @media only screen and (max-width: 550px) {
   .mobile-bottom-bar {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100px;
     width: 100%;
   }
-  .mobile-bottom-bar .song-info {
+  #song-info {
+    transition: all 0.1s linear;
+  }
+  .full_song_info {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    justify-content: center;
+    align-items: center;
+  }
+  .full_song_info img {
+    height: auto;
+    width: 60%;
+    border-radius: 5px;
+  }
+  .full_song_info .kebab_menu {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.2rem;
+    font-size: 2rem;
+  }
+  .full_song_info .expand_more {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.2rem;
+    font-size: 2rem;
+  }
+  .full_song_info .song-details-control {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    overflow: none;
+    width: 100%;
+  }
+  .full_song_info .song-details-control .controls {
+    margin: 20px 0;
+  }
+  .full_song_info .song-details-control .controls button.play {
+    width: 50px;
+    height: 50px;
+  }
+  .full_song_info .song-details-control .song-details {
+    margin: 20px 0;
+    flex-direction: column;
+  }
+  .full_song_info .song-details-control div {
+    display: flex;
+    align-items: center;
+  }
+  .full_song_info .song-details-control div p {
+    font-size: 15px;
+    width: max-content;
+    min-height: 1rem;
+  }
+  .full_song_info .song-details-control div p:first-child {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .full_song_info .song-details-control div .dot {
+    display: none;
+  }
+  .full_song_info .song-details-control div i {
+    font-size: 30px;
+  }
+  .full_song_info .song-progress {
+    position: relative;
+    height: 10px;
+    width: 60%;
+    border-radius: 50px;
+    background-color: var(--card-color);
+  }
+  .full_song_info .song-progress .current-position {
+    border-radius: 50px;
+    height: 100%;
+    width: 0%;
+    background-color: var(--primary-color);
+  }
+  .song-info {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -579,11 +665,17 @@ button.next i {
     height: 50%;
     width: 100%;
   }
-  .mobile-bottom-bar .song-info img {
+  .song-info img {
     height: 100%;
     width: auto;
   }
-  .mobile-bottom-bar .song-info .song-details-control {
+  .song-info .kebab_menu {
+    display: none;
+  }
+  .song-info .expand_more {
+    display: none;
+  }
+  .song-info .song-details-control {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -592,43 +684,43 @@ button.next i {
     height: 100%;
     width: 100%;
   }
-  .mobile-bottom-bar .song-info .song-details-control .controls button.play {
+  .song-info .song-details-control .controls button.play {
     width: 25px;
     height: 25px;
   }
-  .mobile-bottom-bar .song-info .song-details-control div {
+  .song-info .song-details-control div {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
   }
-  .mobile-bottom-bar .song-info .song-details-control div p {
+  .song-info .song-details-control div p {
     font-size: 10px;
     width: max-content;
     min-height: 1rem;
   }
-  .mobile-bottom-bar .song-info .song-details-control div p:first-child {
+  .song-info .song-details-control div p:first-child {
     font-size: 12px;
     font-weight: bold;
   }
-  .mobile-bottom-bar .song-info .song-details-control div .dot {
+  .song-info .song-details-control div .dot {
     width: 4px;
     height: 4px;
     border-radius: 50%;
     background-color: var(--text-color);
     margin: 0 5px;
   }
-  .mobile-bottom-bar .song-info .song-details-control div i {
+  .song-info .song-details-control div i {
     font-size: 15px;
   }
-  .mobile-bottom-bar .song-info .song-progress {
+  .song-info .song-progress {
     position: absolute;
+    left: 0;
     top: -2px;
     height: 2px;
     width: 100%;
     background-color: var(--card-color);
   }
-  .mobile-bottom-bar .song-info .song-progress .current-position {
+  .song-info .song-progress .current-position {
     height: 100%;
     width: 0%;
     background-color: var(--primary-color);
@@ -784,6 +876,12 @@ button.next i {
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 550px) {
+  .playlist_header {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .add_playlist_btn {
@@ -993,7 +1091,7 @@ button.next i {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
+  z-index: 12;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1129,7 +1227,7 @@ button.next i {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 5;
+  z-index: 10;
   transition: opacity 0.2s linear;
 }
 
@@ -1169,6 +1267,47 @@ button.next i {
   color: var(--text-color);
   font-size: 1rem;
   transition: all, 0.3s linear;
+  z-index: 13;
+}
+
+.cusmikLogoContainer {
+  position: fixed;
+  top: 0;
+  opacity: 1;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  background-color: var(--bg-color);
+  animation: fade-off 0.5s linear 3.5s 1 forwards;
+}
+
+.cusmikLogoContainer svg {
+  position: relative;
+  width: 80%;
+  height: 100%;
+}
+
+.cusmik-text {
+  stroke-dasharray: 950px;
+  stroke-dashoffset: 950px;
+  animation: handwriting 4s linear 0.2s 1 forwards;
+}
+
+@keyframes handwriting {
+  to {
+    stroke-dashoffset: 0px;
+  }
+}
+
+@keyframes fade-off {
+  to {
+    opacity: 0;
+    top: -100%;
+  }
 }
 
 :root {

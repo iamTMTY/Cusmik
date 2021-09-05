@@ -6,6 +6,7 @@ import InfoModal from "../Components/InfoModal.js";
 
 export default class NowPlaying {
 	static audio = document.querySelector("#music_player");
+	static playIcons = document.querySelectorAll("i.play");
 	static songs = [];
 	static nowPlaying = null;
 	static paused;
@@ -18,6 +19,8 @@ export default class NowPlaying {
 		this.audio.play();
 		this.paused = false;
 		History.addToHistory(song);
+
+		this.playIcons.forEach((icon) => (icon.textContent = "pause"));
 	};
 
 	static addToNowPlaying = (songs) => {
@@ -41,9 +44,11 @@ export default class NowPlaying {
 		if (this.paused) {
 			this.audio.play();
 			this.paused = false;
+			this.playIcons.forEach((icon) => (icon.textContent = "pause"));
 		} else {
 			this.audio.pause();
 			this.paused = true;
+			this.playIcons.forEach((icon) => (icon.textContent = "play_arrow"));
 		}
 	};
 

@@ -9,6 +9,10 @@
 	justify-content: space-between;
 	align-items: flex-start;
 	margin-bottom: 2rem;
+
+	@media only screen and (max-width: 550px) {
+		margin-bottom: 0.5rem;
+	}
 }
 
 .add_playlist_btn {

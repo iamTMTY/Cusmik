@@ -1,0 +1,41 @@
+.cusmikLogoContainer {
+	position: fixed;
+	top: 0;
+	opacity: 1;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 20;
+	background-color: var(--bg-color);
+	animation: fade-off 0.5s linear 3.5s 1 forwards;
+
+	svg {
+		position: relative;
+		width: 80%;
+		height: 100%;
+	}
+}
+
+.cusmik-text {
+	stroke-dasharray: 950px;
+	stroke-dashoffset: 950px;
+	animation: handwriting 4s linear 0.2s 1 forwards;
+	// animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+@keyframes handwriting {
+	to {
+		stroke-dashoffset: 0px;
+		// stroke-dasharray: 0px;
+	}
+}
+
+@keyframes fade-off {
+	to {
+		opacity: 0;
+		top: -100%;
+	}
+}

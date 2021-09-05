@@ -3,11 +3,9 @@ import { Utility } from "../Utility.js";
 export default class Navigation {
 	static setInitialNav = () => {
 		document.querySelectorAll(`a[href="${document.location.hash}"]`).forEach((link) => {
-			console.log(window.innerWidth);
 			if (window.innerWidth > 550) {
 				link.parentElement.classList.add("active-side-link");
 			} else {
-				console.log(document.location.hash);
 				["#playlists", "#favourite", "#history"].includes(document.location.hash)
 					? document
 							.querySelector(`a[href="#library"]`)
