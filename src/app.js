@@ -46,6 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	// song info click event
 	songInfo.addEventListener("click", MobileFunctionalities.songInfoEvtDelegator);
 
+	songInfo.addEventListener("mousedown", (e) => {
+		e.target.classList.contains("mobile-song-bar") ||
+		e.target.classList.contains("mobile-song-progress")
+			? AudioPlayer.seekStart(e)
+			: false;
+	});
+
 	// Dark mode toggler
 	document.querySelector(".theme-toggle").addEventListener("click", Utility.theme);
 

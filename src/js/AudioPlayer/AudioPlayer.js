@@ -15,7 +15,7 @@ export default class AudioPlayer {
 		const mobileSongProgress = document.querySelector(".current-position");
 
 		this.time.innerText = Utility.formatTime(this.audio.currentTime);
-		endTime.innerText = Utility.formatTime(this.audio.duration);
+		endTime.innerText = this.audio.duration ? Utility.formatTime(this.audio.duration) : "0:00";
 		this.progress.style.width = `${(this.audio.currentTime / this.audio.duration) * 100}%`;
 		mobileSongProgress.style.width = `${(this.audio.currentTime / this.audio.duration) * 100}%`;
 	};

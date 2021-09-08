@@ -10,7 +10,7 @@
 	align-items: center;
 	z-index: 20;
 	background-color: var(--bg-color);
-	animation: fade-off 0.5s linear 3.5s 1 forwards;
+	animation: fade-off 0.5s linear 2.5s 1 forwards;
 
 	svg {
 		position: relative;
@@ -22,7 +22,7 @@
 .cusmik-text {
 	stroke-dasharray: 950px;
 	stroke-dashoffset: 950px;
-	animation: handwriting 4s linear 0.2s 1 forwards;
+	animation: handwriting 3s linear 0.2s 1 forwards;
 	// animation: name duration timing-function delay iteration-count direction fill-mode;
 }
 
@@ -34,7 +34,15 @@
 }
 
 @keyframes fade-off {
-	to {
+	10% {
+		opacity: 1;
+		top: 0;
+	}
+	99% {
+		opacity: 0.1;
+		top: 0;
+	}
+	100% {
 		opacity: 0;
 		top: -100%;
 	}
