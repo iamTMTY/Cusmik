@@ -913,12 +913,6 @@ button.next i {
   align-items: center;
 }
 
-@media only screen and (min-width: 551px) {
-  .card:hover button.card-play {
-    opacity: 1;
-  }
-}
-
 .card-img {
   width: 100%;
   height: auto;
@@ -958,7 +952,7 @@ button.next i {
   border: none;
   cursor: pointer;
   overflow: hidden;
-  opacity: 0;
+  opacity: 0.8;
 }
 
 @media only screen and (max-width: 550px) {
