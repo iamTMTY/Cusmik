@@ -3,7 +3,7 @@
   <img width="100%" src="https://res.cloudinary.com/temitayo/image/upload/v1631318443/cusmik/cusmikLogov4_wqcdxx.svg" />
 </p>
 
-**Cusmik is a music web application built with HTML, CSS and JavaScript.**
+**Cusmik is a music web application built with HTML, SCSS and JavaScript.**
 
 <p align="center">
   <img width="100%" src="https://res.cloudinary.com/temitayo/image/upload/v1631319024/cusmik/cusmik-light_sfzhuh.png" />
