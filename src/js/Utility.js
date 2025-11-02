@@ -53,7 +53,7 @@ export class Utility {
 		if (themeToggle.classList.contains("dark")) {
 			root.style.setProperty("--bg-color", "#fff");
 			root.style.setProperty("--text-color", "#000");
-			root.style.setProperty("--card-color", "rgb(207, 206, 206)");
+			root.style.setProperty("--card-color", "rgb(244, 243, 243)");
 		} else {
 			root.style.setProperty("--bg-color", "rgb(24, 23, 23)");
 			root.style.setProperty("--text-color", "#fff");
